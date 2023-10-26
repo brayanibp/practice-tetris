@@ -70,7 +70,7 @@ const PIECES = [
 
 let canPlayAudio = true;
 
-const audio = new window.Audio('../assets/audio/Tetris.mp3');
+const audio = new window.Audio('/assets/audio/Tetris.mp3');
 
 const piece = {
   position: {
@@ -187,19 +187,19 @@ function removeCompletedRows (): void {
     score += 10;
   });
 
-  incrementSpeed();
+  if (completedRows.length > 0) incrementSpeed();
 }
 
 function getRandomPiece (): number[][] {
-  return PIECES[Math.floor(Math.random() * (PIECES.length - 1))];
+  return PIECES[Math.round(Math.random() * (PIECES.length - 1))];
 }
 
 function getRandomColor (): string {
-  return COLORS[Math.floor(Math.random() * (COLORS.length - 1))];
+  return COLORS[Math.round(Math.random() * (COLORS.length - 1))];
 }
 
 function resetPosition (): void {
-  piece.position.x = Math.floor(BOARD_WIDTH / 2 - 2);
+  piece.position.x = Math.round(BOARD_WIDTH / 2 - 2);
   piece.position.y = 0;
   piece.shape = getRandomPiece();
   piece.color = getRandomColor();
